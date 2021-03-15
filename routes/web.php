@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,12 +32,12 @@ Route::get('/post/create', function () {
     ]);
 });
 Route::get('/post', function () {
-   $post = Post::find(1);
+  $post = Post::find(1);
    return $post ->body;
-    
+
 });
 
 
 Auth::routes();
+Route::get('post2', [ClientController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
