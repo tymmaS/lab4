@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +24,17 @@ Route::get('/main', function () {
 Route::get('/contacts', function () {
     return view('contacts');
 });
-
+Route::get('/post/create', function () {
+    DB::table('post') ->insert([
+        'title' => 'Student',
+        'body' =>'Temirlan Serik'
+    ]);
+});
+Route::get('/post', function () {
+   $post = Post::find(1);
+   return $post ->body;
+    
+});
 
 
 Auth::routes();
